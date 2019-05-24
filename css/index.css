@@ -1,0 +1,224 @@
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Cabin", sans-serif;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background: white;
+}
+
+img {
+  max-width: 100%;
+  max-width: 100%;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+nav__logo {
+  height: 5em;
+}
+
+nav .nav__toggle {
+  width: 1.5rem;
+  height: 5em;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+nav .nav__toggle__icon {
+  display: inline-block;
+  position: relative;
+  width: 1.5rem;
+  height: 3px;
+  background: #454545;
+}
+
+nav .nav__toggle__icon::before, nav .nav__toggle__icon::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 1.5rem;
+  height: 3px;
+  background: inherit;
+}
+
+nav .nav__toggle__icon::before {
+  bottom: 7px;
+}
+
+nav .nav__toggle__icon::after {
+  top: 7px;
+}
+
+main {
+  margin-top: 5em;
+}
+
+.hero {
+  width: 100vw;
+  padding: 0 2em;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 100px 1fr 1fr 150px;
+      grid-template-columns: 100px 1fr 1fr 150px;
+  -ms-grid-rows: auto;
+      grid-template-rows: auto;
+      grid-template-areas: "header header header header" "email email email email " "button button button button" "image_middle image_middle image_middle image_middle";
+  grid-row-gap: 0.4em;
+}
+
+.hero .intro {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 4;
+  grid-area: header;
+  max-width: 35ch;
+}
+
+.hero .intro__title {
+  margin: 0 0 0.35em;
+}
+
+.hero .intro__title__description {
+  font-size: 0.95rem;
+}
+
+.hero input.hero__email {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 4;
+  grid-area: email;
+  padding: 1em;
+  height: 4em;
+  border-radius: 3px;
+  border: solid 1px #454545;
+  color: #454545;
+}
+
+.hero__android {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 4;
+  grid-area: button;
+  text-transform: uppercase;
+  height: 3.5em;
+  font-size: 0.9rem;
+}
+
+.hero__image__middle {
+  -ms-grid-row: 4;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 4;
+  grid-area: image_middle;
+  padding: 1em;
+  -webkit-animation: image_fold 0.7s ease-in-out;
+          animation: image_fold 0.7s ease-in-out;
+}
+
+.hero__description {
+  display: none;
+}
+
+@-webkit-keyframes image_fold {
+  0% {
+    -webkit-transform-origin: top left;
+            transform-origin: top left;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform-origin: top left;
+            transform-origin: top left;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  50.1% {
+    -webkit-transform-origin: bottom right;
+            transform-origin: bottom right;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  100% {
+    -webkit-transform-origin: bottom right;
+            transform-origin: bottom right;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes image_fold {
+  0% {
+    -webkit-transform-origin: top left;
+            transform-origin: top left;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform-origin: top left;
+            transform-origin: top left;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  50.1% {
+    -webkit-transform-origin: bottom right;
+            transform-origin: bottom right;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  100% {
+    -webkit-transform-origin: bottom right;
+            transform-origin: bottom right;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+.btn {
+  display: inline-block;
+  color: #fff;
+  padding: 0.4rem 1.3rem;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  -webkit-transition: opacity 0.2s ease-in;
+  transition: opacity 0.2s ease-in;
+  outline: none;
+  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
+          box-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
+  border-radius: 3px;
+}
+
+.btn-primary {
+  background: #611f69;
+}
+/*# sourceMappingURL=index.css.map */
