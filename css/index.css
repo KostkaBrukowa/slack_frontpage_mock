@@ -19,12 +19,29 @@ img {
   max-width: 100%;
 }
 
+.btn {
+  display: inline-block;
+  color: #fff;
+  padding: 0.4rem 1.3rem;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  border-radius: 3px;
+}
+
+.btn-primary {
+  background: #611f69;
+}
+
 nav {
   position: fixed;
+  z-index: 1000;
   top: 0;
   left: 0;
   width: 100%;
   padding: 0 2em;
+  background: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -80,21 +97,20 @@ nav .nav__toggle__icon::after {
   top: 7px;
 }
 
-main {
-  margin-top: 5em;
-}
-
 .hero {
   width: 100vw;
-  padding: 0 2em;
+  padding: 0 2.5em;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 100px 1fr 1fr 150px;
-      grid-template-columns: 100px 1fr 1fr 150px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-grid-columns: 100px 1fr 1fr 200px;
+      grid-template-columns: 100px 1fr 1fr 200px;
   -ms-grid-rows: auto;
       grid-template-rows: auto;
       grid-template-areas: "header header header header" "email email email email " "button button button button" "image_middle image_middle image_middle image_middle";
-  grid-row-gap: 0.4em;
+  grid-gap: 0.8em;
 }
 
 .hero .intro {
@@ -110,6 +126,7 @@ main {
 }
 
 .hero .intro__title__description {
+  color: #474d55;
   font-size: 0.95rem;
 }
 
@@ -125,28 +142,94 @@ main {
   color: #454545;
 }
 
-.hero__android {
+.hero input.hero__email:focus {
+  outline-color: #611f69;
+}
+
+.hero__button__android {
   -ms-grid-row: 3;
   -ms-grid-column: 1;
   -ms-grid-column-span: 4;
   grid-area: button;
   text-transform: uppercase;
-  height: 3.5em;
-  font-size: 0.9rem;
+  height: 4em;
+  -webkit-transition: background-color 0.2s;
+  transition: background-color 0.2s;
 }
 
-.hero__image__middle {
+.hero__button__android:hover {
+  background-color: #4a154b;
+}
+
+.hero__image__container {
   -ms-grid-row: 4;
   -ms-grid-column: 1;
   -ms-grid-column-span: 4;
   grid-area: image_middle;
+  position: relative;
+  height: auto;
   padding: 1em;
   -webkit-animation: image_fold 0.7s ease-in-out;
           animation: image_fold 0.7s ease-in-out;
 }
 
-.hero__description {
+.hero__image__container::after {
+  content: "Autodesk fosters open communication with slack";
+  display: block;
+  color: #454545;
+  font-size: 0.9rem;
+}
+
+.hero .image__bottom {
+  grid-area: image_bottom;
   display: none;
+}
+
+.hero__description {
+  grid-area: description;
+  height: 100%;
+  display: none;
+}
+
+@media only screen and (min-width: 716px) {
+  .hero {
+        grid-template-areas: ". header header header" "image_middle image_middle image_middle description" "image_middle image_middle image_middle image_bottom" "email email email button";
+  }
+  .hero .intro {
+    max-width: none;
+  }
+  .hero .intro__title {
+    max-width: none;
+    font-size: 3.3rem;
+  }
+  .hero .intro__title__description {
+    display: none;
+  }
+  .hero__description {
+    display: inline;
+    line-height: 1.5;
+  }
+  .hero__image__container {
+    padding: 0;
+    width: 80%;
+    height: 100%;
+    margin-left: auto;
+  }
+  .hero__image__container .image__middle {
+    display: block;
+    margin: 0 0 auto auto;
+    width: 90%;
+  }
+  .hero__image__container::after {
+    width: 90%;
+    margin: 0.8em 0 0 auto;
+  }
+  .hero .image__bottom {
+    display: inline-block;
+    opacity: 0.5;
+    -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+  }
 }
 
 @-webkit-keyframes image_fold {
@@ -203,22 +286,7 @@ main {
   }
 }
 
-.btn {
-  display: inline-block;
-  color: #fff;
-  padding: 0.4rem 1.3rem;
-  text-align: center;
-  border: none;
-  cursor: pointer;
-  -webkit-transition: opacity 0.2s ease-in;
-  transition: opacity 0.2s ease-in;
-  outline: none;
-  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
-          box-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
-  border-radius: 3px;
-}
-
-.btn-primary {
-  background: #611f69;
+main {
+  margin-top: 5em;
 }
 /*# sourceMappingURL=index.css.map */

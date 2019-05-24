@@ -1,0 +1,161 @@
+.hero {
+  width: 100vw;
+  padding: 0 2.5em;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 100px 1fr 1fr 200px;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "header header header header"
+    "email email email email "
+    "button button button button"
+    "image_middle image_middle image_middle image_middle";
+  grid-gap: 0.8em;
+
+  .intro {
+    grid-area: header;
+    max-width: 35ch;
+
+    &__title {
+      margin: 0 0 0.35em;
+    }
+
+    &__title__description {
+      color: $dark-font-color;
+      font-size: 0.95rem;
+    }
+  }
+
+  input.hero__email {
+    grid-area: email;
+
+    padding: 1em;
+    height: 4em;
+
+    border-radius: 3px;
+    border: solid 1px $gray-color;
+
+    color: $gray-color;
+
+    &:focus {
+      outline-color: $primary-color;
+    }
+  }
+
+  &__button__android {
+    grid-area: button;
+    text-transform: uppercase;
+    height: 4em;
+
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: $primary-darken;
+    }
+  }
+
+  &__image__container {
+    grid-area: image_middle;
+    position: relative;
+    height: auto;
+    padding: 1em;
+
+    animation: image_fold 0.7s ease-in-out;
+
+    &::after {
+      content: "Autodesk fosters open communication with slack";
+      display: block;
+      color: $gray-color;
+      font-size: 0.9rem;
+    }
+  }
+
+  .image__bottom {
+    grid-area: image_bottom;
+    display: none;
+  }
+
+  &__description {
+    grid-area: description;
+    height: 100%;
+    display: none;
+  }
+
+  @media only screen and (min-width: 716px) {
+    grid-template-areas:
+      ". header header header"
+      "image_middle image_middle image_middle description"
+      "image_middle image_middle image_middle image_bottom"
+      "email email email button";
+
+    .intro {
+      max-width: none;
+
+      &__title {
+        max-width: none;
+        font-size: 3.3rem;
+      }
+
+      &__title__description {
+        display: none;
+      }
+    }
+
+    &__description {
+      display: inline;
+      line-height: 1.5;
+    }
+
+    &__image__container {
+      padding: 0;
+      width: 80%;
+      height: 100%;
+      margin-left: auto;
+
+      .image__middle {
+        display: block;
+        margin: 0 0 auto auto;
+        width: 90%;
+      }
+
+      // &::before {
+      //   content: '';
+      //   position: absolute;
+      //   z-index: -1;
+      //   width: 100px; height: 100px;
+      //   background: red;
+
+      // }
+
+      &::after {
+        width: 90%;
+        margin: 0.8em 0 0 auto;
+      }
+    }
+
+    .image__bottom {
+      display: inline-block;
+      opacity: 0.5;
+      filter: grayscale(100%);
+    }
+  }
+
+  @keyframes image_fold {
+    0% {
+      transform-origin: top left;
+      transform: scale(1);
+    }
+    50% {
+      transform-origin: top left;
+      transform: scale(0);
+    }
+    50.1% {
+      transform-origin: bottom right;
+      transform: scale(0);
+    }
+    100% {
+      transform-origin: bottom right;
+      transform: scale(1);
+    }
+  }
+}

@@ -1,0 +1,14 @@
+.btn {
+  display: inline-block;
+  color: #fff;
+  padding: 0.4rem 1.3rem;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  border-radius: 3px;
+}
+
+.btn-primary {
+  background: $primary-color;
+}

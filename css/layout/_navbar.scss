@@ -1,0 +1,55 @@
+@import "../partials/base";
+
+nav {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 2em;
+  background: white;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo {
+    height: $nav-height;
+  }
+
+  .nav__toggle {
+    width: 1.5rem;
+    // height: 1.5rem;
+    height: $nav-height;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__icon {
+      display: inline-block;
+      position: relative;
+      width: 1.5rem;
+      height: 3px;
+      background: $gray-color;
+
+      &::before,
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 1.5rem;
+        height: 3px;
+        background: inherit;
+      }
+
+      &::before {
+        bottom: 7px;
+      }
+
+      &::after {
+        top: 7px;
+      }
+    }
+  }
+}
