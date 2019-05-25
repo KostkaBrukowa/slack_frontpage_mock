@@ -1,15 +1,18 @@
 .hero {
-  width: 100vw;
+  width: 100%;
+  max-width: 90vw;
   padding: 0 2.5em;
+  margin: 0 auto;
   display: grid;
   align-items: center;
-  grid-template-columns: 100px 1fr 1fr 200px;
+  grid-template-columns: 10px 1fr 1fr 40px;
+  // grid-template-rows: auto 30px auto auto;
   grid-template-rows: auto;
   grid-template-areas:
     "header header header header"
-    "email email email email "
-    "button button button button"
-    "image_middle image_middle image_middle image_middle";
+    "get_started get_started get_started get_started "
+    "image_top . . ."
+    ". image_middle image_middle image_bottom";
   grid-gap: 0.8em;
 
   .intro {
@@ -26,9 +29,14 @@
     }
   }
 
-  input.hero__email {
-    grid-area: email;
+  &__get__started {
+    grid-area: get_started;
 
+    display: grid;
+    grid-gap: 0.8rem;
+  }
+
+  input.hero__email {
     padding: 1em;
     height: 4em;
 
@@ -43,7 +51,6 @@
   }
 
   &__button__android {
-    grid-area: button;
     text-transform: uppercase;
     height: 4em;
 
@@ -54,25 +61,49 @@
     }
   }
 
-  &__image__container {
+  &__images__container {
     grid-area: image_middle;
     position: relative;
-    height: auto;
-    padding: 1em;
 
     animation: image_fold 0.7s ease-in-out;
 
     &::after {
       content: "Autodesk fosters open communication with slack";
-      display: block;
       color: $gray-color;
       font-size: 0.9rem;
     }
   }
 
+  .image_top_container {
+    position: relative;
+    grid-area: image_top;
+    height: 30px;
+
+    .image__top {
+      position: absolute;
+      z-index: -1;
+
+      max-width: 140px;
+      max-height: 140px;
+      left: -3em;
+      top: 0;
+
+      opacity: 0.5;
+      filter: grayscale(100%);
+
+      animation: image_fold 0.7s ease-in-out;
+    }
+  }
+
   .image__bottom {
     grid-area: image_bottom;
-    display: none;
+    align-self: start;
+    margin-top: 100px;
+    max-width: 140px;
+    max-height: 140px;
+    opacity: 0.5;
+    filter: grayscale(100%);
+    animation: image_fold 0.7s ease-in-out;
   }
 
   &__description {
@@ -81,12 +112,13 @@
     display: none;
   }
 
-  @media only screen and (min-width: 716px) {
+  @media only screen and (min-width: 780px) {
+    grid-template-columns: 100px 1fr 1fr 200px;
     grid-template-areas:
       ". header header header"
-      "image_middle image_middle image_middle description"
-      "image_middle image_middle image_middle image_bottom"
-      "email email email button";
+      "image_top  image_middle image_middle description"
+      ".  image_middle image_middle image_bottom"
+      "get_started get_started get_started get_started";
 
     .intro {
       max-width: none;
@@ -94,6 +126,7 @@
       &__title {
         max-width: none;
         font-size: 3.3rem;
+        padding-left: 1.5rem;
       }
 
       &__title__description {
@@ -101,42 +134,57 @@
       }
     }
 
+    &__get__started {
+      grid-template-columns: 3fr 1fr;
+    }
+
     &__description {
       display: inline;
       line-height: 1.5;
     }
 
-    &__image__container {
-      padding: 0;
-      width: 80%;
+    &__images__container {
       height: 100%;
-      margin-left: auto;
-
-      .image__middle {
-        display: block;
-        margin: 0 0 auto auto;
-        width: 90%;
-      }
-
-      // &::before {
-      //   content: '';
-      //   position: absolute;
-      //   z-index: -1;
-      //   width: 100px; height: 100px;
-      //   background: red;
-
-      // }
-
-      &::after {
-        width: 90%;
-        margin: 0.8em 0 0 auto;
-      }
     }
 
     .image__bottom {
       display: inline-block;
-      opacity: 0.5;
-      filter: grayscale(100%);
+      align-self: end;
+
+      margin-top: 0;
+      max-width: 100%;
+      max-height: none;
+    }
+
+    .image_top_container {
+      height: 100%;
+
+      .image__top {
+        max-width: 200px;
+        max-height: 200px;
+        left: 4em;
+        top: -3.5em;
+      }
+    }
+  }
+
+  @media only screen and (min-width: 970px) {
+    grid-template-columns: 100px 1fr 1fr 230px 70px;
+
+    grid-template-areas:
+      ". header header header header"
+      "image_top image_middle image_middle description  description"
+      ".         image_middle image_middle get_started  get_started"
+      ".         image_middle image_middle image_bottom .";
+
+    grid-row-gap: 1.5rem;
+
+    &__description {
+      line-height: 1.2;
+    }
+
+    .hero__get__started {
+      grid-template-columns: 0.5fr 1fr;
     }
   }
 

@@ -16,7 +16,7 @@ body {
 
 img {
   max-width: 100%;
-  max-width: 100%;
+  max-height: 100%;
 }
 
 .btn {
@@ -98,18 +98,20 @@ nav .nav__toggle__icon::after {
 }
 
 .hero {
-  width: 100vw;
+  width: 100%;
+  max-width: 90vw;
   padding: 0 2.5em;
+  margin: 0 auto;
   display: -ms-grid;
   display: grid;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-grid-columns: 100px 1fr 1fr 200px;
-      grid-template-columns: 100px 1fr 1fr 200px;
+  -ms-grid-columns: 10px 1fr 1fr 40px;
+      grid-template-columns: 10px 1fr 1fr 40px;
   -ms-grid-rows: auto;
       grid-template-rows: auto;
-      grid-template-areas: "header header header header" "email email email email " "button button button button" "image_middle image_middle image_middle image_middle";
+      grid-template-areas: "header header header header" "get_started get_started get_started get_started " "image_top . . ." ". image_middle image_middle image_bottom";
   grid-gap: 0.8em;
 }
 
@@ -130,11 +132,17 @@ nav .nav__toggle__icon::after {
   font-size: 0.95rem;
 }
 
-.hero input.hero__email {
+.hero__get__started {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   -ms-grid-column-span: 4;
-  grid-area: email;
+  grid-area: get_started;
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 0.8rem;
+}
+
+.hero input.hero__email {
   padding: 1em;
   height: 4em;
   border-radius: 3px;
@@ -147,10 +155,6 @@ nav .nav__toggle__icon::after {
 }
 
 .hero__button__android {
-  -ms-grid-row: 3;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 4;
-  grid-area: button;
   text-transform: uppercase;
   height: 4em;
   -webkit-transition: background-color 0.2s;
@@ -161,28 +165,59 @@ nav .nav__toggle__icon::after {
   background-color: #4a154b;
 }
 
-.hero__image__container {
+.hero__images__container {
   -ms-grid-row: 4;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 4;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 2;
   grid-area: image_middle;
   position: relative;
-  height: auto;
-  padding: 1em;
   -webkit-animation: image_fold 0.7s ease-in-out;
           animation: image_fold 0.7s ease-in-out;
 }
 
-.hero__image__container::after {
+.hero__images__container::after {
   content: "Autodesk fosters open communication with slack";
-  display: block;
   color: #454545;
   font-size: 0.9rem;
 }
 
+.hero .image_top_container {
+  position: relative;
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: image_top;
+  height: 30px;
+}
+
+.hero .image_top_container .image__top {
+  position: absolute;
+  z-index: -1;
+  max-width: 140px;
+  max-height: 140px;
+  left: -3em;
+  top: 0;
+  opacity: 0.5;
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+  -webkit-animation: image_fold 0.7s ease-in-out;
+          animation: image_fold 0.7s ease-in-out;
+}
+
 .hero .image__bottom {
+  -ms-grid-row: 4;
+  -ms-grid-column: 4;
   grid-area: image_bottom;
-  display: none;
+  -ms-flex-item-align: start;
+      -ms-grid-row-align: start;
+      align-self: start;
+  margin-top: 100px;
+  max-width: 140px;
+  max-height: 140px;
+  opacity: 0.5;
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+  -webkit-animation: image_fold 0.7s ease-in-out;
+          animation: image_fold 0.7s ease-in-out;
 }
 
 .hero__description {
@@ -191,9 +226,11 @@ nav .nav__toggle__icon::after {
   display: none;
 }
 
-@media only screen and (min-width: 716px) {
+@media only screen and (min-width: 780px) {
   .hero {
-        grid-template-areas: ". header header header" "image_middle image_middle image_middle description" "image_middle image_middle image_middle image_bottom" "email email email button";
+    -ms-grid-columns: 100px 1fr 1fr 200px;
+        grid-template-columns: 100px 1fr 1fr 200px;
+        grid-template-areas: ". header header header" "image_top  image_middle image_middle description" ".  image_middle image_middle image_bottom" "get_started get_started get_started get_started";
   }
   .hero .intro {
     max-width: none;
@@ -201,34 +238,55 @@ nav .nav__toggle__icon::after {
   .hero .intro__title {
     max-width: none;
     font-size: 3.3rem;
+    padding-left: 1.5rem;
   }
   .hero .intro__title__description {
     display: none;
+  }
+  .hero__get__started {
+    -ms-grid-columns: 3fr 1fr;
+        grid-template-columns: 3fr 1fr;
   }
   .hero__description {
     display: inline;
     line-height: 1.5;
   }
-  .hero__image__container {
-    padding: 0;
-    width: 80%;
+  .hero__images__container {
     height: 100%;
-    margin-left: auto;
-  }
-  .hero__image__container .image__middle {
-    display: block;
-    margin: 0 0 auto auto;
-    width: 90%;
-  }
-  .hero__image__container::after {
-    width: 90%;
-    margin: 0.8em 0 0 auto;
   }
   .hero .image__bottom {
     display: inline-block;
-    opacity: 0.5;
-    -webkit-filter: grayscale(100%);
-            filter: grayscale(100%);
+    -ms-flex-item-align: end;
+        -ms-grid-row-align: end;
+        align-self: end;
+    margin-top: 0;
+    max-width: 100%;
+    max-height: none;
+  }
+  .hero .image_top_container {
+    height: 100%;
+  }
+  .hero .image_top_container .image__top {
+    max-width: 200px;
+    max-height: 200px;
+    left: 4em;
+    top: -3.5em;
+  }
+}
+
+@media only screen and (min-width: 970px) {
+  .hero {
+    -ms-grid-columns: 100px 1fr 1fr 230px 70px;
+        grid-template-columns: 100px 1fr 1fr 230px 70px;
+        grid-template-areas: ". header header header header" "image_top image_middle image_middle description  description" ".         image_middle image_middle get_started  get_started" ".         image_middle image_middle image_bottom .";
+    grid-row-gap: 1.5rem;
+  }
+  .hero__description {
+    line-height: 1.2;
+  }
+  .hero .hero__get__started {
+    -ms-grid-columns: 0.5fr 1fr;
+        grid-template-columns: 0.5fr 1fr;
   }
 }
 
