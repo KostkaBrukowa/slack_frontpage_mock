@@ -3,7 +3,18 @@
 @import "partials/buttons";
 @import "layout/navbar";
 @import "layout/hero";
+@import "layout/features";
+@import "layout/companies";
+@import "partials/text_styles.scss";
+@import "partials/base";
+
+
+*, *::before, *::after {
+  max-width: 100vw;
+}
 
 main {
   margin-top: $nav-height;
+  margin-left: auto;
+  margin-right: auto;
 }

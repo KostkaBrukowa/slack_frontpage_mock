@@ -1,0 +1,62 @@
+@import "../modules/colors";
+.companies {
+  background-color: #f4f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  padding-top: 1em;
+  margin: 4em 0;
+}
+
+.companies__header {
+  width: 85%;
+  text-align: center;
+}
+
+.companies__header__title {
+  font-size: 1.9rem;
+}
+
+.companies__header__description {
+  margin: 0.6em 0;
+}
+
+.companies__card__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0.7em;
+  width: 70%;
+
+  // height: 4em;
+  background-color: white;
+}
+
+.companies__card__logo {
+  margin: 1.5em 0;
+}
+
+.companies__card__description {
+  font-size: 1.1rem;
+  color: $gray-color;
+  text-align: center;
+  font-weight: 600;
+  // position: relative;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  // flex-direction: 
+
+  &::after {
+    content: "";
+    display: block;
+    background-image: url("../../imgs/right_arrow.png");
+    background-size: 30px 16px;
+    width: 30px;
+    height: 16px;
+    margin: 2em 0 1em calc(100% - 1em);
+  }
+}

@@ -1,0 +1,17 @@
+.blue-link {
+  color: #1264a3;
+  text-decoration: none;
+}
+
+.blue-link-border {
+  border-bottom: 1px solid #1264a3;
+}
+
+.blue-link-border:hover {
+  border-bottom: 2px solid #1264a3;
+}
+
+.link-bold {
+  font-weight: 500;
+}
+/*# sourceMappingURL=text_styles.css.map */

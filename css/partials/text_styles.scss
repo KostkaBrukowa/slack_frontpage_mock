@@ -1,0 +1,18 @@
+$blue-link-color: #1264a3;
+
+.blue-link {
+  color: $blue-link-color;
+  text-decoration: none;
+}
+
+.blue-link-border {
+  border-bottom: 1px solid $blue-link-color;
+
+  &:hover {
+    border-bottom: 2px solid $blue-link-color;
+  }
+}
+
+.link-bold {
+  font-weight: 500;
+}
