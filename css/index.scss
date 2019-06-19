@@ -7,14 +7,19 @@
 @import "layout/companies";
 @import "partials/text_styles.scss";
 @import "partials/base";
-
+@import "partials/card";
 
 *, *::before, *::after {
-  max-width: 100vw;
+  // max-width: 100vw;
+  box-sizing: border-box;
 }
 
 main {
   margin-top: $nav-height;
   margin-left: auto;
   margin-right: auto;
+}
+
+html, body {
+  height: 100%;
 }
